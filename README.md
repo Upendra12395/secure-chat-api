@@ -1,6 +1,6 @@
+
 # Secure Chat API
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Installation<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 *********Install Node*********
 ---
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash # Replace v0.39.7 with the latest NVM version
