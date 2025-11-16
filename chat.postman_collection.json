@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "8d64dfbd-c14e-40f7-9258-48f89dadcf3f",
+		"name": "chat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16602587",
+		"_collection_link": "https://lively-satellite-386071.postman.co/workspace/FirstApp~af2d044f-1ff4-4467-8858-0096cf908d43/collection/16602587-8d64dfbd-c14e-40f7-9258-48f89dadcf3f?action=share&source=collection_link&creator=16602587"
+	},
+	"item": [
+		{
+			"name": "check health",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{dev_host}}/health",
+					"host": [
+						"{{dev_host}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"upendra chauhan\",\n    \"email\":\"upendrachauhan95@gmail.com\",\n    \"password\":\"Upendra@1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dev_host}}/api/v1/auth/register",
+					"host": [
+						"{{dev_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"upendrachauhan95@gmail.com\",\n    \"password\":\"Upendra@1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dev_host}}/api/v1/auth/login",
+					"host": [
+						"{{dev_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"upendrachauhan95@gmail.com\",\n    \"password\":\"Upendra@1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dev_host}}/api/v1/auth/refresh",
+					"host": [
+						"{{dev_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"upendrachauhan95@gmail.com\",\n    \"password\":\"Upendra@1234\"\n}"
+				},
+				"url": {
+					"raw": "{{dev_host}}/api/v1/auth/logout",
+					"host": [
+						"{{dev_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload profile picture",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTc2MzI0NDM0OCwiZXhwIjoxNzYzMjQ1MjQ4fQ.8kdbqHooWbryd3YHEbC8xxx1gPEEtqqJfwCUGC2gHXg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pictures",
+							"type": "file",
+							"src": [
+								"/Users/aarti/Downloads/dp-min-2-2-2-2-2.jpg",
+								"/Users/aarti/Downloads/dp-min-2-2-2-2-2.png"
+							]
+						}
+					]
+				},
+				"url": {
+					"raw": "{{dev_host}}/api/v1/users/2/profile-pictures",
+					"host": [
+						"{{dev_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"2",
+						"profile-pictures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "default profile picture",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTc2MzI2ODE2OSwiZXhwIjoxNzYzMjY5MDY5fQ.K0ao1xDM2ieMYKyn01D3II04Oj7MtnRTA5a2jRt11f8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pictures",
+							"type": "file",
+							"src": "/Users/aarti/Downloads/dp-min-2-2-2-2-2.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{dev_host}}/api/v1/users/1/profile-pictures/2.jpg/default",
+					"host": [
+						"{{dev_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1",
+						"profile-pictures",
+						"2.jpg",
+						"default"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete profile picture",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTc2MzI0NDM0OCwiZXhwIjoxNzYzMjQ1MjQ4fQ.8kdbqHooWbryd3YHEbC8xxx1gPEEtqqJfwCUGC2gHXg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{dev_host}}/api/v1/users/1/profile-pictures/1.jpg",
+					"host": [
+						"{{dev_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1",
+						"profile-pictures",
+						"1.jpg"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

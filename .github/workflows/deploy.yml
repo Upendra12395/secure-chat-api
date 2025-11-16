@@ -1,0 +1,55 @@
+name: Deploy Secure Chat API
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Install Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Run Tests (optional)
+      - name: Run tests
+        run: npm test
+        continue-on-error: true
+
+      # 5. Build project (if needed)
+      - name: Build app
+        run: npm run build --if-present
+
+      # 6. SSH Deploy (git pull + restart)
+      - name: Deploy to On-Prem Server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          script: |
+            cd /var/www/secure-chat-api
+
+            echo "Fetching latest changes..."
+            git fetch --all
+            git reset --hard origin/main
+
+            echo "Installing dependencies..."
+            npm install --production
+
+            echo "Restarting PM2..."
+            pm2 reload secure-chat-api || pm2 start src/server.js --name secure-chat-api
+            echo "Deployment completed successfully."
