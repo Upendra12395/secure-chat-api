@@ -47,6 +47,7 @@ docker compose version
 or
 docker-compose --version
 
+change the docker-compose.yml accordingly for mysl and redis connection
 
 docker-compose build
 docker-compose up
