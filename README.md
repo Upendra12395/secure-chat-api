@@ -8,9 +8,11 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 source ~/.bashrc    # or ~/.zshrc if using zsh
 
 nvm install --lts   # Install latest LTS Node.js
+
 nvm use --lts       # Use the LTS version
 
 node -v
+
 npm -v
 
 
