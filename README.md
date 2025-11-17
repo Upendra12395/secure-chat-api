@@ -1,56 +1,111 @@
-
 # Secure Chat API
 
-*********Install Node*********
----
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash # Replace v0.39.7 with the latest NVM version
-source ~/.bashrc # or ~/.zshrc if you use zsh
+************************************
+********* Install Node *************
+************************************
 
-nvm install --lts # Install the latest LTS version of Node.js
-nvm use --lts # Use the latest LTS version
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc    # or ~/.zshrc if using zsh
+
+nvm install --lts   # Install latest LTS Node.js
+nvm use --lts       # Use the LTS version
 
 node -v
 npm -v
----
 
-*********Clone this repo*********
 
-$ git clone git@github.com:sidhantpanda/docker-express-typescript-boilerplate.git your-app-name
-$ cd your-app-name
+************************************
+********* Clone this repo **********
+************************************
 
-*********Install dependencies*********
+git clone https://github.com/Upendra12395/secure-chat-api.git
+cd secure-chat-api
+
+
+************************************
+******** Install dependencies *******
+************************************
+
 npm install
 
 
-*********Update ENV*********
+************************************
+********* Update ENV File **********
+************************************
+
+Create `.env` file:
+
 sudo nano .env
 
-and paste the sample evn from .env.example
+Copy values from `.env.example` and fill in:
+
+- Database credentials  
+- Redis configuration  
+- JWT secrets  
+- AWS S3 keys  
+- App port etc.
 
 
+************************************
+********** Start Server ************
+************************************
 
-*********Start Server*********
+For development:
 
-npm run dev or npm run start
+npm run dev
+
+For production:
+
+npm start
 
 
-*********Postman Collection*********
-postman collection shared in repo
+************************************
+******* Postman Collection *********
+************************************
+
+Postman collection is included in the repository inside:
+
+`secure-chat-api.postman_collection.json`
 
 
-*********Docker*********
-install Docker and check installation status
+************************************
+************* Docker ***************
+************************************
+
+Install Docker Desktop:
 https://www.docker.com/products/docker-desktop/
 
-docker --version
-docker compose version
-or
+Check installation:
+
+docker --version  
+docker compose version  
+# or  
 docker-compose --version
 
-change the docker-compose.yml accordingly for mysl and redis connection
+
+************************************
+**** Run using Docker Compose ******
+************************************
+
+Build containers:
 
 docker-compose build
+
+Start containers:
+
 docker-compose up
 
-to stop container
+Stop containers:
+
 docker-compose down
+
+
+************************************
+*** Notes for Docker Configuration **
+************************************
+
+- Update `docker-compose.yml` with your MySQL + Redis environment.
+- Make sure `.env` is correctly loaded.
+- App server runs on port **4000** by default.
+- MySQL runs inside Docker on **internal hostname `mysql`**.
+
