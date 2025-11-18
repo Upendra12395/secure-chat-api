@@ -112,3 +112,10 @@ docker-compose down
 - App server runs on port **4000** by default.
 - MySQL runs inside Docker on **internal hostname `mysql`**.
 
+
+************************************
+*** Swagger UI based API Docs **
+************************************
+
+http://localhost:4000/api-docs/#/
+

@@ -12,6 +12,8 @@ const { createSuccessResponse } = require('./utils/response');
 
 const app = express();
 
+require("./config/swagger")(app);
+
 app.use(helmet());
 app.use(cors({ origin: true, credentials: true }));
 // app.use(xss());
@@ -22,9 +24,7 @@ app.use(morgan('combined'));
 
 const db = require("./models"); // <-- loads index.js which loads all models
 const sequelize = db.sequelize;
-sequelize.sync({ alter: true })
-  .then(() => console.log("Database synced"))
-  .catch(err => console.error("Sync error:", err));
+sequelize.sync();
 
 const limiter = require('./middlewares/rateLimiter');
 app.use(limiter);
